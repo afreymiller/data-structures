@@ -3,7 +3,11 @@
 
 int main(void)
 {
-    struct node* list = build_123();
+    struct node* list = BuildOneTwoThree();
+
+    Push(&list, 13);
+
+    Push(&(list->next), 42);
 
     int l;
 
@@ -11,6 +15,6 @@ int main(void)
 
     printf("%d\n", l);
 
-    
+
     return 0;
 }

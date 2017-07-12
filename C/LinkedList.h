@@ -21,7 +21,7 @@ int Length(struct node* head)
     return count;
 };
 
-struct node * build_123()
+struct node * BuildOneTwoThree()
 {
     struct node * first = malloc(sizeof(*first));
     struct node * second = malloc(sizeof(*second));
@@ -34,4 +34,14 @@ struct node * build_123()
     *third = (struct node){ 3, NULL };
 
     return first;
+}
+
+void Push(struct node** headRef, int newData)
+{
+    struct node * newHead = malloc(sizeof(*newHead));
+
+    newHead->next = *headRef;
+    newHead->data = newData; 
+
+    *headRef = newHead;
 }
