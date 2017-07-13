@@ -11,7 +11,7 @@ int main(void)
 
     int l;
 
-    l = Length(list);
+    l = GetNth(list, 5);
 
     printf("%d\n", l);
 

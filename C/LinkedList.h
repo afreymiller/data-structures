@@ -45,3 +45,41 @@ void Push(struct node** headRef, int newData)
 
     *headRef = newHead;
 }
+
+int Count(struct node* head, int searchFor)
+{
+    int count = 0;
+
+    while(head != NULL)
+    {
+        if(head->data == searchFor)
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int GetNth(struct node* head, int index)
+{
+    int val, dataFound, count;
+    count = 0;
+    dataFound = -1; //signifies we have not found data yet
+
+    while(head != NULL)
+    {
+        if(count == index)
+        {
+            return head->data;
+        }
+        else
+        {
+            head = head->next;
+            count++;
+        }
+    }
+
+    assert(dataFound != -1);
+    return 0;
+}
