@@ -115,3 +115,25 @@ int Pop(struct node** head_ref)
 
     return val;
 }
+
+void InsertNth(struct node** headRef, int index, int data)
+{
+    if (index == 0)
+    {
+        Push(headRef, data);
+    }
+    else{
+        struct node* current = *headRef;
+        int i;
+
+        for(i=0; i<index-1; i++)
+        {
+            assert(current != NULL);
+            current = current->next;
+        }
+
+        assert(current != NULL);
+
+        Push(&(current->next), data);
+    }
+}
