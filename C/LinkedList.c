@@ -9,12 +9,11 @@ int main(void)
 
     Push(&(list->next), 42);
 
-    int l;
+    DeleteList(&list);
 
-    l = GetNth(list, 5);
+    int l = Length(list);
 
     printf("%d\n", l);
-
 
     return 0;
 }

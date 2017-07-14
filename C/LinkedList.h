@@ -83,3 +83,21 @@ int GetNth(struct node* head, int index)
     assert(dataFound != -1);
     return 0;
 }
+
+void DeleteList(struct node** head_ref)
+{
+   /* deref head_ref to get the real head */
+   struct node* current = *head_ref;
+   struct node* next;
+ 
+   while (current != NULL) 
+   {
+       next = current->next;
+       free(current);
+       current = next;
+   }
+   
+   /* deref head_ref to affect the real head back
+      in the caller. */
+   *head_ref = NULL;
+}
