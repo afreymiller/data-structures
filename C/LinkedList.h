@@ -137,3 +137,22 @@ void InsertNth(struct node** headRef, int index, int data)
         Push(&(current->next), data);
     }
 }
+
+void SortedInsert(struct node** headRef, struct node* newNode)
+{
+    if (*headRef == NULL || (*headRef)->data >= newNode->data)
+    {
+        newNode->next = *headRef;
+        *headRef = newNode;
+    }
+    else
+    {
+        struct node* current = *headRef;
+        while (current->next != NULL && current->next->data < newNode->data)
+        {
+            current = current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+}
