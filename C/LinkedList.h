@@ -101,3 +101,17 @@ void DeleteList(struct node** head_ref)
       in the caller. */
    *head_ref = NULL;
 }
+
+int Pop(struct node** head_ref)
+{
+    struct node* current = *head_ref;
+    struct node* new_head;
+    int val;
+
+    new_head = current->next;
+    val  = current->data;
+    free(current);
+    current = new_head;
+
+    return val;
+}

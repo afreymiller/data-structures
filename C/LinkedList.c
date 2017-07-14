@@ -9,9 +9,7 @@ int main(void)
 
     Push(&(list->next), 42);
 
-    DeleteList(&list);
-
-    int l = Length(list);
+    int l = Pop(&list);
 
     printf("%d\n", l);
 
