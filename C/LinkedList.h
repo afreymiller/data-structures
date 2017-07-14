@@ -156,3 +156,19 @@ void SortedInsert(struct node** headRef, struct node* newNode)
         current->next = newNode;
     }
 }
+
+void InsertSort(struct node** headRef)
+{
+    struct node* result = NULL;
+    struct node* current = *headRef;
+    struct node* next;
+
+    while (current != NULL)
+    {
+        next = current->next;
+        SortedInsert(&result, current);
+        current = next;
+    }
+
+    *headRef = result;
+}
