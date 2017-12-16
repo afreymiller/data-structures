@@ -7,9 +7,9 @@ int main(void)
 
     Push(&list, 13);
 
-    Push(&(list->next), 42);
+   // Push(&(list->next), 42);
 
-    int l = Pop(&list);
+    int l = Length(list);
 
     printf("%d\n", l);
 

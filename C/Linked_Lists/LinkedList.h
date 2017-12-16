@@ -15,6 +15,7 @@ int Length(struct node* head)
     while (head != NULL)
     {
         count++;
+        printf("%d\n", head->data);
         head = head->next;
     }
 
@@ -171,4 +172,80 @@ void InsertSort(struct node** headRef)
     }
 
     *headRef = result;
+}
+
+void Append(struct node** aRef, struct node** bRef)
+{
+    struct node* current;
+
+    if (*aRef == NULL){
+        *aRef = *bRef;
+    }
+    else
+    {
+        current = *aRef;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+        current->next = *bRef;
+    }
+}
+
+void FrontBackSplit(struct node* source, 
+    struct node** frontRef, struct node** backRef)
+    {
+        int len = Length(source);
+        int i;
+        struct node* current = source; 
+
+        if (len < 2)
+        {
+            *frontRef = source;
+            *backRef = NULL;
+        }   
+        else 
+        {
+            int hopCount = (len-1)/2;
+            for (i = 0; i < hopCount; i++)
+            {
+                current = current->next;
+            }
+
+            *frontRef = source;
+            *backRef = current->next;
+            current->next = NULL;
+        }
+    }
+
+void RemoveDuplicates(struct node* head)
+{
+    struct node* current = head;
+
+    if(current == NULL) return;
+
+    while(current->next != NULL)
+    {
+        if (current->data == current->next->data)
+        {
+            struct node* nextNext = current->next->next;
+            free(current->next);
+            current->next = nextNext;
+        }
+        else 
+        {
+            current = current->next;
+        }
+    }
+}
+
+void MoveNode(struct node** destRef, struct node** sourceRef)
+{
+    struct node* newNode = *sourceRef;
+    assert(newNode != NULL);
+
+    *sourceRef = newNode->next;
+
+    newNode->next = *destRef;
+    *destRef = newNode;
 }
