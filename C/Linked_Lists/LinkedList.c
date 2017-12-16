@@ -1,5 +1,5 @@
 
-#include "LinkedList.h"
+#include "Methods.h"
 
 int main(void)
 {
