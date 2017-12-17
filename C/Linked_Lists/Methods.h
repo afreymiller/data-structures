@@ -3,6 +3,22 @@
 #include <assert.h>
 #include "Models.h"
 
+/* Initialize and return a linked list of three nodes */
+node* build_one_two_three() {
+    node* first = malloc(sizeof(*first));
+    node* second = malloc(sizeof(*second));
+    node* third = malloc(sizeof(*third));
+
+    assert(first && second && third);
+
+    *first = (node){ 1, second };
+    *second = (node){ 2, third };
+    *third = (node){ 3, NULL };
+
+    return first;
+}
+
+/* Given a linked list, return its length */
 int get_length(node* head) {
     int count = 0;
 
@@ -14,60 +30,33 @@ int get_length(node* head) {
     return count;
 };
 
-node * BuildOneTwoThree()
-{
-    node * first = malloc(sizeof(*first));
-    node * second = malloc(sizeof(*second));
-    node * third = malloc(sizeof(*third));
-
-    assert(first && second && third);
-
-    *first = (node){ 1, second };
-    *second = (node){ 2, third };
-    *third = (node){ 3, NULL };
-
-    return first;
-}
-
-void Push(node** headRef, int newData)
-{
-    node * newHead = malloc(sizeof(*newHead));
-
-    newHead->next = *headRef;
-    newHead->data = newData; 
-
-    *headRef = newHead;
-}
-
-int Count(node* head, int searchFor)
-{
+/* Given a linked list and value to search for, 
+   return the frequency of that value */
+int get_frequency(node* head, int val) {
     int count = 0;
 
-    while(head != NULL)
-    {
-        if(head->data == searchFor)
-        {
+    while (head != NULL) {
+        if(head->data == val){
             count++;
         }
+        head = head->next;
     }
 
     return count;
 }
 
-int GetNth(node* head, int index)
-{
+/* Given a linked list and index, return
+the value at that index if applicable */
+int get_nth(node* head, int index) {
     int val, dataFound, count;
     count = 0;
-    dataFound = -1; //signifies we have not found data yet
+    dataFound = -1; //denotes we have not found data yet
 
-    while(head != NULL)
-    {
-        if(count == index)
-        {
+    while(head != NULL) {
+        if(count == index) {
             return head->data;
         }
-        else
-        {
+        else {
             head = head->next;
             count++;
         }
@@ -76,6 +65,48 @@ int GetNth(node* head, int index)
     assert(dataFound != -1);
     return 0;
 }
+
+/* Given a double-pointer to a linked list,
+append a new head to the linked list of 
+specified data */
+void push(node** head, int new_data) {
+    node * new_head = malloc(sizeof(*new_head));
+
+    new_head->next = *head;
+    new_head->data = new_data; 
+    *head = new_head;
+}
+
+/* DIAGRAM
+           
+ head *: |1|*| -> |2|*| -> |3|x|, new_head *: |4|x|
+ new_head *, head *: |4|x| -> |1|*| -> |2|*| -> |3|x|
+ head = new_head
+
+*/
+
+void InsertNth(node** headRef, int index, int data)
+{
+    if (index == 0)
+    {
+        push(headRef, data);
+    }
+    else{
+        node* current = *headRef;
+        int i;
+
+        for(i=0; i<index-1; i++)
+        {
+            assert(current != NULL);
+            current = current->next;
+        }
+
+        assert(current != NULL);
+
+        push(&(current->next), data);
+    }
+}
+
 
 void DeleteList(node** head_ref)
 {
@@ -107,28 +138,6 @@ int Pop(node** head_ref)
     current = new_head;
 
     return val;
-}
-
-void InsertNth(node** headRef, int index, int data)
-{
-    if (index == 0)
-    {
-        Push(headRef, data);
-    }
-    else{
-        node* current = *headRef;
-        int i;
-
-        for(i=0; i<index-1; i++)
-        {
-            assert(current != NULL);
-            current = current->next;
-        }
-
-        assert(current != NULL);
-
-        Push(&(current->next), data);
-    }
 }
 
 void SortedInsert(node** headRef, node* newNode)
@@ -187,7 +196,7 @@ void Append(node** aRef, node** bRef)
 void FrontBackSplit(node* source, 
     node** frontRef, node** backRef)
     {
-        int len = Length(source);
+        int len = get_length(source);
         int i;
         node* current = source; 
 
