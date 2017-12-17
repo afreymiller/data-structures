@@ -3,38 +3,35 @@
 #include <assert.h>
 #include "Models.h"
 
-int Length(struct node* head)
-{
+int get_length(node* head) {
     int count = 0;
 
-    while (head != NULL)
-    {
+    while (head != NULL) {
         count++;
-        printf("%d\n", head->data);
         head = head->next;
     }
 
     return count;
 };
 
-struct node * BuildOneTwoThree()
+node * BuildOneTwoThree()
 {
-    struct node * first = malloc(sizeof(*first));
-    struct node * second = malloc(sizeof(*second));
-    struct node * third = malloc(sizeof(*third));
+    node * first = malloc(sizeof(*first));
+    node * second = malloc(sizeof(*second));
+    node * third = malloc(sizeof(*third));
 
     assert(first && second && third);
 
-    *first = (struct node){ 1, second };
-    *second = (struct node){ 2, third };
-    *third = (struct node){ 3, NULL };
+    *first = (node){ 1, second };
+    *second = (node){ 2, third };
+    *third = (node){ 3, NULL };
 
     return first;
 }
 
-void Push(struct node** headRef, int newData)
+void Push(node** headRef, int newData)
 {
-    struct node * newHead = malloc(sizeof(*newHead));
+    node * newHead = malloc(sizeof(*newHead));
 
     newHead->next = *headRef;
     newHead->data = newData; 
@@ -42,7 +39,7 @@ void Push(struct node** headRef, int newData)
     *headRef = newHead;
 }
 
-int Count(struct node* head, int searchFor)
+int Count(node* head, int searchFor)
 {
     int count = 0;
 
@@ -57,7 +54,7 @@ int Count(struct node* head, int searchFor)
     return count;
 }
 
-int GetNth(struct node* head, int index)
+int GetNth(node* head, int index)
 {
     int val, dataFound, count;
     count = 0;
@@ -80,11 +77,11 @@ int GetNth(struct node* head, int index)
     return 0;
 }
 
-void DeleteList(struct node** head_ref)
+void DeleteList(node** head_ref)
 {
    /* deref head_ref to get the real head */
-   struct node* current = *head_ref;
-   struct node* next;
+   node* current = *head_ref;
+   node* next;
  
    while (current != NULL) 
    {
@@ -98,10 +95,10 @@ void DeleteList(struct node** head_ref)
    *head_ref = NULL;
 }
 
-int Pop(struct node** head_ref)
+int Pop(node** head_ref)
 {
-    struct node* current = *head_ref;
-    struct node* new_head;
+    node* current = *head_ref;
+    node* new_head;
     int val;
 
     new_head = current->next;
@@ -112,14 +109,14 @@ int Pop(struct node** head_ref)
     return val;
 }
 
-void InsertNth(struct node** headRef, int index, int data)
+void InsertNth(node** headRef, int index, int data)
 {
     if (index == 0)
     {
         Push(headRef, data);
     }
     else{
-        struct node* current = *headRef;
+        node* current = *headRef;
         int i;
 
         for(i=0; i<index-1; i++)
@@ -134,7 +131,7 @@ void InsertNth(struct node** headRef, int index, int data)
     }
 }
 
-void SortedInsert(struct node** headRef, struct node* newNode)
+void SortedInsert(node** headRef, node* newNode)
 {
     if (*headRef == NULL || (*headRef)->data >= newNode->data)
     {
@@ -143,7 +140,7 @@ void SortedInsert(struct node** headRef, struct node* newNode)
     }
     else
     {
-        struct node* current = *headRef;
+        node* current = *headRef;
         while (current->next != NULL && current->next->data < newNode->data)
         {
             current = current->next;
@@ -153,11 +150,11 @@ void SortedInsert(struct node** headRef, struct node* newNode)
     }
 }
 
-void InsertSort(struct node** headRef)
+void InsertSort(node** headRef)
 {
-    struct node* result = NULL;
-    struct node* current = *headRef;
-    struct node* next;
+    node* result = NULL;
+    node* current = *headRef;
+    node* next;
 
     while (current != NULL)
     {
@@ -169,9 +166,9 @@ void InsertSort(struct node** headRef)
     *headRef = result;
 }
 
-void Append(struct node** aRef, struct node** bRef)
+void Append(node** aRef, node** bRef)
 {
-    struct node* current;
+    node* current;
 
     if (*aRef == NULL){
         *aRef = *bRef;
@@ -187,12 +184,12 @@ void Append(struct node** aRef, struct node** bRef)
     }
 }
 
-void FrontBackSplit(struct node* source, 
-    struct node** frontRef, struct node** backRef)
+void FrontBackSplit(node* source, 
+    node** frontRef, node** backRef)
     {
         int len = Length(source);
         int i;
-        struct node* current = source; 
+        node* current = source; 
 
         if (len < 2)
         {
@@ -213,9 +210,9 @@ void FrontBackSplit(struct node* source,
         }
     }
 
-void RemoveDuplicates(struct node* head)
+void RemoveDuplicates(node* head)
 {
-    struct node* current = head;
+    node* current = head;
 
     if(current == NULL) return;
 
@@ -223,7 +220,7 @@ void RemoveDuplicates(struct node* head)
     {
         if (current->data == current->next->data)
         {
-            struct node* nextNext = current->next->next;
+            node* nextNext = current->next->next;
             free(current->next);
             current->next = nextNext;
         }
@@ -234,9 +231,9 @@ void RemoveDuplicates(struct node* head)
     }
 }
 
-void MoveNode(struct node** destRef, struct node** sourceRef)
+void MoveNode(node** destRef, node** sourceRef)
 {
-    struct node* newNode = *sourceRef;
+    node* newNode = *sourceRef;
     assert(newNode != NULL);
 
     *sourceRef = newNode->next;

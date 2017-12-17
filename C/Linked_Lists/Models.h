@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-struct node 
-{
+typedef struct node {
     int data;
     struct node* next;
-};
+} node ;

@@ -3,13 +3,13 @@
 
 int main(void)
 {
-    struct node* list = BuildOneTwoThree();
+    node* list = BuildOneTwoThree();
 
     Push(&list, 13);
 
    // Push(&(list->next), 42);
 
-    int l = Length(list);
+    int l = get_length(list);
 
     printf("%d\n", l);
 
