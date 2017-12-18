@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "Models.h"
+#include "models.h"
 
 /* Initialize and return a linked list of three nodes */
 node* build_one_two_three() {
@@ -48,9 +48,9 @@ int get_frequency(node* head, int val) {
 /* Given a linked list and index, return
 the value at that index if applicable */
 int get_nth(node* head, int index) {
-    int val, dataFound, count;
+    int val, nthFound, count;
     count = 0;
-    dataFound = -1; //denotes we have not found data yet
+    nthFound = -1; //denotes we have not found data yet
 
     while(head != NULL) {
         if(count == index) {
@@ -62,7 +62,7 @@ int get_nth(node* head, int index) {
         }
     }
 
-    assert(dataFound != -1);
+    assert(nthFound != -1);
     return 0;
 }
 
