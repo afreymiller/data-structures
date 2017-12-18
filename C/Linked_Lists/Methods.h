@@ -85,8 +85,7 @@ void push(node** head, int new_data) {
 
 */
 
-void InsertNth(node** headRef, int index, int data)
-{
+void InsertNth(node** headRef, int index, int data){
     if (index == 0)
     {
         push(headRef, data);
