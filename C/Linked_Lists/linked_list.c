@@ -10,8 +10,8 @@ int main(void)
 
    // Push(&(list->next), 42);
 
-    int l = get_nth(list, 0);
-
+    insert_nth(&list, 3, 5);
+    int l = get_nth(list, 3);
     printf("%d\n", l);
 
     return 0;

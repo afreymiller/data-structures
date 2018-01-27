@@ -66,9 +66,8 @@ int get_nth(node* head, int index) {
     return 0;
 }
 
-/* Given a double-pointer to a linked list,
-append a new head to the linked list of 
-specified data */
+/* Given double-pointer to a linked list,
+append a new head to the linked list */
 void push(node** head, int new_data) {
     node * new_head = malloc(sizeof(*new_head));
 
@@ -85,17 +84,15 @@ void push(node** head, int new_data) {
 
 */
 
-void InsertNth(node** headRef, int index, int data){
-    if (index == 0)
-    {
-        push(headRef, data);
+void insert_nth(node** head, int index, int data){
+    if (index == 0){
+        push(head, data);
     }
     else{
-        node* current = *headRef;
+        node* current = *head;
         int i;
 
-        for(i=0; i<index-1; i++)
-        {
+        for (i=0; i<index-1; i++) {
             assert(current != NULL);
             current = current->next;
         }
