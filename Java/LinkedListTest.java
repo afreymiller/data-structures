@@ -7,6 +7,6 @@ public class LinkedListTest {
         sl.add(54);
         sl.add(89);  
 
-        sl.traverse();   
+        sl.printMiddle();  
     }
 }
