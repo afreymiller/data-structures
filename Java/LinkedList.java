@@ -8,9 +8,7 @@ public class LinkedList<T> {
         Node<T> nd = new Node<T>();
         nd.setValue(element);
         System.out.println("Adding: "+element);
-        /**
-         * check if the list is empty
-         */
+        /* Check if the list is empty */
         if(head == null){
             //since there is only one element, both head and 
             //tail points to the same object.
@@ -18,9 +16,20 @@ public class LinkedList<T> {
             tail = nd;
         } else {
             //set current tail next link to new node
-            tail.setNextRef(nd);
+            tail.setNext(nd);
             //set tail as newly created node
             tail = nd;
+        }
+    }
+
+    public void traverse() {
+        Node<T> curr = head;
+        while (true) {
+            if (curr == null) {
+                break;
+            } 
+            System.out.println(curr.getValue());
+            curr = curr.getNext();
         }
     }
 }

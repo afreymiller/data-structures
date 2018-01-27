@@ -9,10 +9,10 @@ class Node<T> implements Comparable<T> {
     public void setValue(T value) {
         this.value = value;
     }
-    public Node<T> getNextRef() {
+    public Node<T> getNext() {
         return nextRef;
     }
-    public void setNextRef(Node<T> ref) {
+    public void setNext(Node<T> ref) {
         this.nextRef = ref;
     }
     @Override
