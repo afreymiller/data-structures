@@ -5,8 +5,10 @@ public class LinkedListTest {
         sl.add(3);
         sl.add(32);
         sl.add(54);
+        sl.add(4);
         sl.add(89);  
+        sl.add(91);
 
-        sl.printMiddle();  
+        sl.traverse();  
     }
 }

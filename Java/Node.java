@@ -1,7 +1,7 @@
 class Node<T> implements Comparable<T> {
      
     private T value;
-    private Node<T> nextRef;
+    private Node<T> next;
      
     public T getValue() {
         return value;
@@ -10,10 +10,10 @@ class Node<T> implements Comparable<T> {
         this.value = value;
     }
     public Node<T> getNext() {
-        return nextRef;
+        return next;
     }
     public void setNext(Node<T> ref) {
-        this.nextRef = ref;
+        this.next = ref;
     }
     @Override
     public int compareTo(T arg) {

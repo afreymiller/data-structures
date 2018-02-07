@@ -3,24 +3,32 @@ import java.lang.Math;
 public class LinkedList<T> {
  
     private Node<T> head;
-    private Node<T> tail;
      
     public void add(T element){
          
-        Node<T> nd = new Node<T>();
-        nd.setValue(element);
+        Node<T> tail = new Node<T>();
+        Node<T> headRef = head;
+
+        /* Since we're appending to the tail, we 
+        can just set it's values here */
+        tail.setValue(element);
+        tail.setNext(null);
+
         System.out.println("Adding: "+element);
+
         /* Check if the list is empty */
         if(head == null){
-            //since there is only one element, both head and 
-            //tail points to the same object.
-            head = nd;
-            tail = nd;
+            /* Only one element, set head to tail */
+            head = tail;
         } else {
-            //set current tail next link to new node
-            tail.setNext(nd);
-            //set tail as newly created node
-            tail = nd;
+            while (headRef != null) {
+                if (headRef.getNext() == null) {
+                    headRef.setNext(tail);
+                    break;
+                } else {
+                    headRef = headRef.getNext();
+                }
+            }
         }
     }
 
