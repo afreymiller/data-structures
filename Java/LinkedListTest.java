@@ -9,6 +9,9 @@ public class LinkedListTest {
         sl.add(89);  
         sl.add(91);
 
-        sl.traverse();  
+        sl.traverse();
+
+        int l = sl.getLength();  
+        System.out.println(l);
     }
 }

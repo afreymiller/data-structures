@@ -3,14 +3,23 @@ import java.lang.Math;
 public class LinkedList<T> {
  
     private Node<T> head;
+
+    /* Access all nodes of linked list */
+    public void traverse() {
+        Node<T> curr = head;
+        while (curr != null) {
+            System.out.println(curr.getValue());
+            curr = curr.getNext();
+        }
+    }
      
+    /* Add node to end of linked list */
     public void add(T element){
          
         Node<T> tail = new Node<T>();
         Node<T> headRef = head;
 
-        /* Since we're appending to the tail, we 
-        can just set it's values here */
+        /* Since we're adding the tail, set its value here */
         tail.setValue(element);
         tail.setNext(null);
 
@@ -32,16 +41,7 @@ public class LinkedList<T> {
         }
     }
 
-    public void printMiddle(){
-        Node<T> curr = head;
-        int len = this.getLength();
-        int middleIndex = (int)Math.floor((double)len/(double)2);
-
-
-
-        System.out.println(middleIndex);
-    }
-
+    /* Return length of linked list */
     public int getLength() {
         int length = 0;
         Node<T> curr = head;
@@ -50,16 +50,5 @@ public class LinkedList<T> {
             curr = curr.getNext();
         }
         return length;
-    }
-
-    public void traverse() {
-        Node<T> curr = head;
-        while (true) {
-            if (curr == null) {
-                break;
-            } 
-            System.out.println(curr.getValue());
-            curr = curr.getNext();
-        }
     }
 }
