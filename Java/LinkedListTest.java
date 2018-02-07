@@ -5,10 +5,11 @@ public class LinkedListTest {
         sl.add(3);
         sl.add(2);
         sl.add(54);
-        sl.push(3);
+        sl.push(8);
+        sl.push(1);
 
         sl.traverse();
-        int count = sl.count(3);
-        System.out.println(count);
+        int second = sl.getNth(4);
+        System.out.println(second);
     }
 }

@@ -68,6 +68,19 @@ public class LinkedList<T> {
         return count;
     }
 
+    public T getNth(int n) {
+        int len = this.getLength();
+        assert n < len : "Out of bounds";
+        
+        int i = 0;
+        Node<T> curr = head;
+        while (i < n) {
+            curr = curr.getNext();
+            i++;
+        }
+        return curr.getValue();
+    }
+
     /* Return length of linked list */
     public int getLength() {
         int length = 0;
