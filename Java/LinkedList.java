@@ -41,6 +41,33 @@ public class LinkedList<T> {
         }
     }
 
+    /* Add node at beginning of linked list */
+    public void push(T element) {
+        Node<T> newHead = new Node<T>();
+        newHead.setValue(element);
+
+        if (head == null) {
+            newHead.setNext(null);
+            head = newHead;
+        } else {
+            newHead.setNext(head);
+            head = newHead;
+        }
+    }
+
+    /* Get count of element in linked list */
+    public int count(T element) {
+        Node<T> curr = head;
+        int count = 0;
+        while (curr != null) {
+            if (curr.getValue() == element) {
+                count++;
+            }
+            curr = curr.getNext();
+        }
+        return count;
+    }
+
     /* Return length of linked list */
     public int getLength() {
         int length = 0;
