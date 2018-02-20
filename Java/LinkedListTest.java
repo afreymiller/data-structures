@@ -8,8 +8,6 @@ public class LinkedListTest {
         sl.push(8);
         sl.push(1);
 
-        sl.traverse();
-        int second = sl.getNth(4);
-        System.out.println(second);
+        sl.getNth(8);
     }
 }
