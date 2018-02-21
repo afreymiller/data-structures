@@ -7,7 +7,13 @@ public class LinkedListTest {
         sl.add(54);
         sl.push(8);
         sl.push(1);
+        sl.add(6);
+        sl.add(7);
 
-        sl.getNth(8);
+        sl.traverse();
+        System.out.println("************");
+
+        sl.insertNth(3, 8);
+        sl.traverse();
     }
 }

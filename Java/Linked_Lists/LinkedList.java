@@ -112,13 +112,18 @@ public class LinkedList<T> {
 
         Node<T> inserted = new Node<T>();
         inserted.setValue(elem);
+        Node<T> prev = new Node<T>();
         Node<T> curr = head;
+
         int i = 0;
-        while (i < index - 1) {
+        while (i < index) {
+            /* Keep track of previous node */
+            prev = curr;
             curr = curr.getNext();
             i++;
         }
 
-
+        prev.setNext(inserted);
+        inserted.setNext(curr);
     }
 }
