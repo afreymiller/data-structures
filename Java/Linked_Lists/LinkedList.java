@@ -126,4 +126,7 @@ public class LinkedList<T> {
         prev.setNext(inserted);
         inserted.setNext(curr);
     }
+
+    /* Just use ints for the type and 
+    worry about generics later */
 }
