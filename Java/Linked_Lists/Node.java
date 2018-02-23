@@ -1,4 +1,4 @@
-class Node<T> implements Comparable<T> {
+class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
      
     private T value;
     private Node<T> next;
@@ -15,12 +15,9 @@ class Node<T> implements Comparable<T> {
     public void setNext(Node<T> ref) {
         this.next = ref;
     }
+
     @Override
-    public int compareTo(T arg) {
-        if(arg == this.value){
-            return 0;
-        } else {
-            return 1;
-        }
+    public int compareTo(Node<T> arg) {
+        return getValue().compareTo(arg.getValue());
     }
 }
