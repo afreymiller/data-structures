@@ -1,12 +1,12 @@
 import java.lang.Math;
 
-public class LinkedList<T> {
+public class LinkedList {
  
-    private Node<T> head;
+    private Node head;
 
-    /* Log all nodes */
+    /* Output all nodes */
     public void traverse() {
-        Node<T> curr = head;
+        Node curr = head;
         while (curr != null) {
             System.out.println(curr.getValue());
             curr = curr.getNext();
@@ -14,10 +14,10 @@ public class LinkedList<T> {
     }
      
     /* Add to end. Time: O(n) */
-    public void add(T element) {
+    public void add(int element) {
          
-        Node<T> tail = new Node<T>();
-        Node<T> headRef = head;
+        Node tail = new Node();
+        Node headRef = head;
 
         /* Set tail value here */
         tail.setValue(element);
@@ -42,8 +42,8 @@ public class LinkedList<T> {
     }
 
     /* Add node before head. Time: O(1) */
-    public void push(T element) {
-        Node<T> newHead = new Node<T>();
+    public void push(int element) {
+        Node newHead = new Node();
         newHead.setValue(element);
 
         if (head == null) {
@@ -55,20 +55,20 @@ public class LinkedList<T> {
         }
     }
 
-    /* Remove head and return its value.
-    Time: O(1) */
-    public T pop() {
-        Node<T> curr = head;
-        T valAtHead = head.getValue();
+    /* Remove head, return value. Time: O(1) */
+    public int pop() {
+        Node curr = head;
+        int valAtHead = head.getValue();
         curr = curr.getNext();
         head = curr;
         return valAtHead;
     }
 
     /* Get specific element count. Time: O(n) */
-    public int count(T element) {
-        Node<T> curr = head;
+    public int count(int element) {
+        Node curr = head;
         int count = 0;
+
         while (curr != null) {
             if (curr.getValue() == element) {
                 count++;
@@ -79,12 +79,12 @@ public class LinkedList<T> {
     }
 
     /* Time: O(n) */
-    public T getNth(int n) {
+    public int getNth(int n) {
         int len = this.getLength();
         assert n < len : "Out of bounds";
         
         int i = 0;
-        Node<T> curr = head;
+        Node curr = head;
         while (i < n) {
             curr = curr.getNext();
             i++;
@@ -95,7 +95,7 @@ public class LinkedList<T> {
     /* Return length of linked list */
     public int getLength() {
         int length = 0;
-        Node<T> curr = head;
+        Node curr = head;
         while (curr != null) {
             length++;
             curr = curr.getNext();
@@ -104,16 +104,18 @@ public class LinkedList<T> {
     }
 
     /* If index is in-bounds, add there */
-    public void insertNth(int index, T elem) {
+    public void insertNth(int index, int elem) {
         int len = getLength();
         if (index >= len) {
             return;
         }
 
-        Node<T> inserted = new Node<T>();
+        /* Initialize node to be added and keep 
+        track of the previous and current nodes */
+        Node inserted = new Node();
         inserted.setValue(elem);
-        Node<T> prev = new Node<T>();
-        Node<T> curr = head;
+        Node prev = new Node();
+        Node curr = head;
 
         int i = 0;
         while (i < index) {
@@ -126,7 +128,4 @@ public class LinkedList<T> {
         prev.setNext(inserted);
         inserted.setNext(curr);
     }
-
-    /* Just use ints for the type and 
-    worry about generics later */
 }

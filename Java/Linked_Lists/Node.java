@@ -1,23 +1,22 @@
-class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
+class Node {
      
-    private T value;
-    private Node<T> next;
+    private int value;
+    private Node next;
      
-    public T getValue() {
+    public int getValue() {
         return value;
     }
-    public void setValue(T value) {
+    public void setValue(int value) {
         this.value = value;
     }
-    public Node<T> getNext() {
+    public Node getNext() {
         return next;
     }
-    public void setNext(Node<T> ref) {
+    public void setNext(Node ref) {
         this.next = ref;
     }
 
-    @Override
-    public int compareTo(Node<T> arg) {
-        return getValue().compareTo(arg.getValue());
+    public boolean compareTo(Node arg) {
+        return (getValue() <= arg.getValue());
     }
 }

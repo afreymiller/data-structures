@@ -1,9 +1,9 @@
 public class NodeTest {
     public static void main(String[] args){
-        Node<Integer> a = new Node<Integer>();
+        Node a = new Node();
         a.setValue(1);
 
-        Node<Integer> b = new Node<Integer>();
+        Node b = new Node();
         b.setValue(0);
 
         int compValue = a.compareTo(b);

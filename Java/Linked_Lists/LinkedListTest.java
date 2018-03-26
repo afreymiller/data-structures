@@ -1,7 +1,7 @@
 
 public class LinkedListTest {
     public static void main(String[] args){
-        LinkedList<Integer> sl = new LinkedList<Integer>();
+        LinkedList sl = new LinkedList();
         sl.add(3);
         sl.add(2);
         sl.add(54);
@@ -13,7 +13,8 @@ public class LinkedListTest {
         sl.traverse();
         System.out.println("************");
 
-        sl.insertNth(3, 8);
+        sl.insertNth(4, 99);
+
         sl.traverse();
     }
 }
