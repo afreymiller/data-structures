@@ -128,4 +128,22 @@ public class LinkedList {
         prev.setNext(inserted);
         inserted.setNext(curr);
     }
+
+    /* Given a sorted linked list, insert the node
+    in the correct index so the list remains sorted */
+    public void sortedInsert(int elem) {
+        Node inserted = new Node();
+        inserted.setValue(elem);
+        Node prev = new Node();
+        Node curr = head;
+
+        while (elem > curr.getValue()) {
+            /* Keep track of previous node */
+            prev = curr;
+            curr = curr.getNext();
+        }
+
+        prev.setNext(inserted);
+        inserted.setNext(curr);
+    }
 }
