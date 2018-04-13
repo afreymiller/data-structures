@@ -9,14 +9,7 @@
         tree.root.right = new Node(3);
  
         tree.root.left.left = new Node(4);
-        /* 4 becomes left child of 2
-                    1
-                /       \
-               2          3
-             /   \       /  \
-            4    null  null  null
-           /   \
-          null null
-         */
+       
+        tree.traverseInorder();
     }
 }
