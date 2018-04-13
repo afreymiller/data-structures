@@ -10,6 +10,6 @@
  
         tree.root.left.left = new Node(4);
        
-        tree.traverseInorder();
+        tree.traversePreorder();
     }
 }
