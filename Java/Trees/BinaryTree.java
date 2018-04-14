@@ -27,6 +27,22 @@ class BinaryTree {
         return sizeOf(root);
     }
 
+    int getHeight(Node a) {
+        /* Root is null */
+        if (a == null) {
+            return 0;
+        } else {
+            int lHeight = getHeight(a.left);
+            int rHeight = getHeight(a.right);
+
+            if (lHeight > rHeight) {
+                return (lHeight + 1);
+            } else {
+                return (rHeight + 1);
+            }
+        }
+    }
+
     boolean treesAreIdentical(Node a, Node b) {
         /* Both roots are empty */
         if (a == null && b == null) {
