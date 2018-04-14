@@ -6,11 +6,13 @@ public class LinkedListTest {
         sl.add(2);
         sl.add(3);
         sl.add(5);
+        sl.add(6);
+        sl.add(9);
 
         sl.traverse();
         System.out.println("************");
 
-        sl.sortedInsert(4);
+        sl.deleteAtIndex(4);
 
         sl.traverse();
     }

@@ -92,6 +92,35 @@ public class LinkedList {
         return curr.getValue();
     }
 
+    public void deleteAtIndex(int i) {
+        int len = this.getLength();
+
+        if (i < 0 || i >= len) {
+            return;
+        }
+
+        Node curr = head;
+        Node prev = curr;
+
+        if (i == 0) {
+            curr = curr.getNext();
+            head = curr;
+            return;
+        } else {
+            int pos = 0;
+            while (pos < i) {
+                prev = curr;
+                curr = curr.getNext();
+                pos++;
+            }
+
+            curr = curr.getNext();
+            prev.setNext(curr);
+
+            return;
+        }
+    }
+
     /* Return length of linked list */
     public int getLength() {
         int length = 0;
