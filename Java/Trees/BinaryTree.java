@@ -96,6 +96,25 @@ class BinaryTree {
         does not */
         return false;
     }
+    
+    Node getLCA(Node rootRef, int n1, int n2) {
+        int r;
+
+        while (rootRef != null) {
+
+            r = rootRef.data;
+
+            if (r > n1 && r > n2) {
+                rootRef = rootRef.left;
+            } else if (r < n1 && r < n2) {
+                rootRef = rootRef.right;
+            } else {
+                break;
+            }
+        }
+
+        return rootRef;        
+    }
 
     /* Print out all binary tree root-to-leaf paths,
     one per line. Uses a recursive helper */
