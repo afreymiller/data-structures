@@ -8,8 +8,7 @@
         tree1.root.right = new Node(3);
         tree1.root.left.left = new Node(4);
 
-        int height = tree1.getHeight(tree1.root);
-        System.out.println(height);
+        tree1.printPaths(tree1.root);
         
     }
 }
